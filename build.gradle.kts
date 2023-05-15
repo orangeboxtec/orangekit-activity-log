@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.orangebox.kit.activitylog"
-version = "1.0.2"
+version = "1.0.3"
 
 repositories {
     mavenCentral()
@@ -28,6 +28,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-resteasy-reactive")
+    implementation("org.mongodb:bson:4.9.1")
 
     implementation("com.orangebox.kit.core:orangekit-core:1.0.9")
     implementation("com.orangebox.kit.authkey:orangekit-authkey:1.0.1")

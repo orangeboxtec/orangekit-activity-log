@@ -4,10 +4,10 @@ import com.orangebox.kit.core.exception.BusinessException
 import java.util.*
 
 class ActivityLogBuilder {
-    private val activityLog: ActivityLog
+
+    private val activityLog = ActivityLog()
 
     init {
-        activityLog = ActivityLog()
         activityLog.date = Date()
     }
 

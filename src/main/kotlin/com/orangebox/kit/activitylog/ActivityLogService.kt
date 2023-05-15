@@ -24,21 +24,19 @@ class ActivityLogService {
     }
 
     fun save(activityLog: ActivityLog){
-        save(activityLog, null)
-    }
-
-    fun save(activityLog: ActivityLog, usersNoti: List<GeneralUser>?){
         if(activityLog.id == null){
             activityLog.date = Date()
         }
         activityLogDAO.insert(activityLog)
-        usersNoti?.forEach { user ->
-            notificationService.sendNotification(NotificationBuilder()
-                .setTypeSending(TypeSendingNotificationEnum.APP)
-                .setMessage(activityLog.activity)
-                .setIdLink(activityLog.idObj)
-                .setTo(user)
-                .build())
+        if(activityLog.sendNotification == true){
+            activityLog.listUsersNotification?.forEach { user ->
+                notificationService.sendNotification(NotificationBuilder()
+                    .setTypeSending(TypeSendingNotificationEnum.APP)
+                    .setMessage(activityLog.activity)
+                    .setIdLink(activityLog.idObj)
+                    .setTo(user)
+                    .build())
+            }
         }
     }
 }

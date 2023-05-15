@@ -2,6 +2,8 @@ package com.orangebox.kit.activitylog
 
 import com.orangebox.kit.core.annotation.OKEntity
 import com.orangebox.kit.core.annotation.OKId
+import com.orangebox.kit.core.user.GeneralUser
+import org.bson.codecs.pojo.annotations.BsonIgnore
 import java.util.Date
 import javax.json.bind.annotation.JsonbDateFormat
 
@@ -23,4 +25,9 @@ class ActivityLog {
     var activity: String? = null
 
     var obj: Any? = null
+
+    var sendNotification: Boolean? = null
+
+    @BsonIgnore
+    var listUsersNotification: List<GeneralUser>? = null
 }
