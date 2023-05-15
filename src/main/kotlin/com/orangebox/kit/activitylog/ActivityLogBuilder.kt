@@ -21,32 +21,32 @@ class ActivityLogBuilder {
         return activityLog
     }
 
-    fun setDate(date: Date): ActivityLogBuilder {
+    fun date(date: Date): ActivityLogBuilder {
         activityLog.date = date
         return this
     }
 
-    fun setIdObj(idObj: String): ActivityLogBuilder {
+    fun idObj(idObj: String): ActivityLogBuilder {
         activityLog.idObj = idObj
         return this
     }
 
-    fun setNameUser(nameUser: String): ActivityLogBuilder {
+    fun nameUser(nameUser: String): ActivityLogBuilder {
         activityLog.nameUser = nameUser
         return this
     }
 
-    fun setIdUser(idUser: String): ActivityLogBuilder {
+    fun idUser(idUser: String): ActivityLogBuilder {
         activityLog.idUser = idUser
         return this
     }
 
-    fun setActivity(activity: String): ActivityLogBuilder {
+    fun activity(activity: String): ActivityLogBuilder {
         activityLog.activity = activity
         return this
     }
 
-    fun setObj(obj: Any): ActivityLogBuilder {
+    fun obj(obj: Any): ActivityLogBuilder {
         activityLog.obj = obj
         return this
     }
