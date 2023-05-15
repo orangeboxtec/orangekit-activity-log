@@ -1,0 +1,44 @@
+package com.orangebox.kit.activitylog
+
+import com.orangebox.kit.core.user.GeneralUser
+import com.orangebox.kit.notification.NotificationBuilder
+import com.orangebox.kit.notification.NotificationService
+import com.orangebox.kit.notification.TypeSendingNotificationEnum
+import java.util.Date
+import javax.enterprise.context.ApplicationScoped
+import javax.inject.Inject
+
+@ApplicationScoped
+class ActivityLogService {
+
+    @Inject
+    private lateinit var activityLogDAO: ActivityLogDAO
+
+    @Inject
+    private lateinit var notificationService: NotificationService
+
+    fun listByIdObj(idObj: String): List<ActivityLog>?{
+        return activityLogDAO.search(activityLogDAO.createBuilder()
+            .appendParamQuery("idObj", idObj)
+            .build())
+    }
+
+    fun save(activityLog: ActivityLog){
+        save(activityLog, null)
+    }
+
+    fun save(activityLog: ActivityLog, usersNoti: List<GeneralUser>?){
+        if(activityLog.id == null){
+            activityLog.date = Date()
+        }
+        activityLogDAO.insert(activityLog)
+        usersNoti?.forEach { user ->
+            notificationService.sendNotification(NotificationBuilder()
+                .setTypeSending(TypeSendingNotificationEnum.APP)
+                .setMessage(activityLog.activity)
+                .setIdLink(activityLog.idObj)
+                .setTo(user)
+                .build())
+        }
+    }
+}
