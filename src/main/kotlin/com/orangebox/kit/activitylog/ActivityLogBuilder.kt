@@ -22,7 +22,7 @@ class ActivityLogBuilder {
         return activityLog
     }
 
-    fun date(date: Date): ActivityLogBuilder {
+    fun date(date: Date?): ActivityLogBuilder {
         activityLog.date = date
         return this
     }
@@ -32,12 +32,12 @@ class ActivityLogBuilder {
         return this
     }
 
-    fun nameUser(nameUser: String): ActivityLogBuilder {
+    fun nameUser(nameUser: String?): ActivityLogBuilder {
         activityLog.nameUser = nameUser
         return this
     }
 
-    fun idUser(idUser: String): ActivityLogBuilder {
+    fun idUser(idUser: String?): ActivityLogBuilder {
         activityLog.idUser = idUser
         return this
     }
@@ -47,17 +47,17 @@ class ActivityLogBuilder {
         return this
     }
 
-    fun obj(obj: Any): ActivityLogBuilder {
+    fun obj(obj: Any?): ActivityLogBuilder {
         activityLog.obj = obj
         return this
     }
 
-    fun sendNotification(sendNotification: Boolean): ActivityLogBuilder {
+    fun sendNotification(sendNotification: Boolean?): ActivityLogBuilder {
         activityLog.sendNotification = sendNotification
         return this
     }
 
-    fun listUsersNotification(listUsersNotification: List<GeneralUser>): ActivityLogBuilder {
+    fun listUsersNotification(listUsersNotification: List<GeneralUser>?): ActivityLogBuilder {
         activityLog.listUsersNotification = listUsersNotification
         return this
     }
