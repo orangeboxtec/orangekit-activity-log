@@ -1,6 +1,7 @@
 package com.orangebox.kit.activitylog
 
 import com.orangebox.kit.core.exception.BusinessException
+import com.orangebox.kit.core.user.GeneralUser
 import java.util.*
 
 class ActivityLogBuilder {
@@ -48,6 +49,16 @@ class ActivityLogBuilder {
 
     fun obj(obj: Any): ActivityLogBuilder {
         activityLog.obj = obj
+        return this
+    }
+
+    fun sendNotification(sendNotification: Boolean): ActivityLogBuilder {
+        activityLog.sendNotification = sendNotification
+        return this
+    }
+
+    fun listUsersNotification(listUsersNotification: List<GeneralUser>): ActivityLogBuilder {
+        activityLog.listUsersNotification = listUsersNotification
         return this
     }
 }
