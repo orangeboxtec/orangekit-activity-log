@@ -32,13 +32,8 @@ class ActivityLogBuilder {
         return this
     }
 
-    fun nameUser(nameUser: String?): ActivityLogBuilder {
-        activityLog.nameUser = nameUser
-        return this
-    }
-
-    fun idUser(idUser: String?): ActivityLogBuilder {
-        activityLog.idUser = idUser
+    fun user(user: GeneralUser): ActivityLogBuilder {
+        activityLog.user = user
         return this
     }
 

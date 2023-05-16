@@ -20,6 +20,7 @@ class ActivityLogService {
     fun listByIdObj(idObj: String): List<ActivityLog>?{
         return activityLogDAO.search(activityLogDAO.createBuilder()
             .appendParamQuery("idObj", idObj)
+            .appendSort("date", -1)
             .build())
     }
 

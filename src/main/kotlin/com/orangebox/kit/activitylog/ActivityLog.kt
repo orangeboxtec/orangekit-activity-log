@@ -18,9 +18,7 @@ class ActivityLog {
 
     var idObj: String? = null
 
-    var idUser: String? = null
-
-    var nameUser: String? = null
+    var user: GeneralUser? = null
 
     var activity: String? = null
 
