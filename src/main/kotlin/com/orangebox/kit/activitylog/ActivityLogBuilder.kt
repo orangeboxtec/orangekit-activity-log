@@ -2,6 +2,7 @@ package com.orangebox.kit.activitylog
 
 import com.orangebox.kit.core.exception.BusinessException
 import com.orangebox.kit.core.user.GeneralUser
+import com.orangebox.kit.core.user.UserCard
 import java.util.*
 
 class ActivityLogBuilder {
@@ -32,7 +33,7 @@ class ActivityLogBuilder {
         return this
     }
 
-    fun user(user: GeneralUser): ActivityLogBuilder {
+    fun user(user: UserCard): ActivityLogBuilder {
         activityLog.user = user
         return this
     }
