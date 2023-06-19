@@ -14,7 +14,7 @@ class ActivityLog {
     @OKId
     var id: String? = null
 
-    @JsonbDateFormat("yyyy-MM-dd HH:mm:ss")
+    @JsonbDateFormat("yyyy-MM-dd HH:mm:ss Z")
     var date: Date? = null
 
     var idObj: String? = null
