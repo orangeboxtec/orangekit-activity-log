@@ -27,6 +27,7 @@ class ActivityLogService {
     fun save(activityLog: ActivityLog){
         if(activityLog.id == null){
             activityLog.date = Date()
+            println("Date: " + Date().toString())
         }
         activityLogDAO.insert(activityLog)
         if(activityLog.sendNotification == true){
