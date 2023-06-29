@@ -1,15 +1,21 @@
 package com.orangebox.kit.activitylog
 
+import com.orangebox.kit.core.dao.OperationEnum
+import com.orangebox.kit.core.dao.SearchBuilder
+import com.orangebox.kit.core.dto.ResponseList
 import com.orangebox.kit.core.user.GeneralUser
 import com.orangebox.kit.notification.NotificationBuilder
 import com.orangebox.kit.notification.NotificationService
 import com.orangebox.kit.notification.TypeSendingNotificationEnum
+import java.util.ArrayList
 import java.util.Date
 import javax.enterprise.context.ApplicationScoped
 import javax.inject.Inject
 
 @ApplicationScoped
 class ActivityLogService {
+
+    private val QUANTITY_PAGE = 12
 
     @Inject
     private lateinit var activityLogDAO: ActivityLogDAO
@@ -40,5 +46,37 @@ class ActivityLogService {
                     .build())
             }
         }
+    }
+
+    fun search(search: ActivityLogSearch): ResponseList<ActivityLog>? {
+        var list: MutableList<ActivityLog>? = null
+        val searchBuilder: SearchBuilder = activityLogDAO.createBuilder()
+
+        if (search.queryString != null && search.queryString!!.isNotEmpty()) {
+            searchBuilder.appendParamQuery("company.document|customer.document|customer.email|customer.name", search.queryString!!, OperationEnum.OR_FIELDS_LIKE)
+        }
+
+        if (search.idObj != null && search.idObj!!.isNotEmpty()) {
+            searchBuilder.appendParamQuery("idObj", search.idObj!!)
+        }
+
+        if (search.beginDate != null) {
+            searchBuilder.appendParamQuery("date", search.beginDate!!, OperationEnum.GTE)
+        }
+
+        if (search.endDate != null) {
+            searchBuilder.appendParamQuery("date", search.endDate!!, OperationEnum.LTE)
+        }
+
+        if (search.obj != null) {
+            search.obj?.keys?.forEach { key ->
+                searchBuilder.appendParamQuery("info.$key", search.obj!![key]!!)
+            }
+        }
+
+        searchBuilder.appendSort("date", -1)
+        searchBuilder.setFirst(QUANTITY_PAGE * search.page!!)
+        searchBuilder.setMaxResults(QUANTITY_PAGE)
+        return activityLogDAO.searchToResponse(searchBuilder.build())
     }
 }
