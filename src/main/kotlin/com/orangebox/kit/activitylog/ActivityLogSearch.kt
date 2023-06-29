@@ -11,6 +11,10 @@ class ActivityLogSearch {
 
     var idObj: String? = null
 
+    var typeObj: String? = null
+
+    var nameObj: String? = null
+
     var beginDate: Date? = null
 
     var endDate: Date? = null

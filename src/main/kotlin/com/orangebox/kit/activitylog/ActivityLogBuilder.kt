@@ -33,6 +33,16 @@ class ActivityLogBuilder {
         return this
     }
 
+    fun typeObj(typeObj: String): ActivityLogBuilder {
+        activityLog.typeObj = typeObj
+        return this
+    }
+
+    fun nameObj(nameObj: String): ActivityLogBuilder {
+        activityLog.nameObj = nameObj
+        return this
+    }
+
     fun user(user: UserCard): ActivityLogBuilder {
         activityLog.user = user
         return this

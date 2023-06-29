@@ -19,6 +19,10 @@ class ActivityLog {
 
     var idObj: String? = null
 
+    var typeObj: String? = null
+
+    var nameObj: String? = null
+
     var user: UserCard? = null
 
     var activity: String? = null

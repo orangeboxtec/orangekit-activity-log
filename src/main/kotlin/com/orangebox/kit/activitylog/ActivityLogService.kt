@@ -33,7 +33,6 @@ class ActivityLogService {
     fun save(activityLog: ActivityLog){
         if(activityLog.id == null){
             activityLog.date = Date()
-            println("Date: " + Date().toString())
         }
         activityLogDAO.insert(activityLog)
         if(activityLog.sendNotification == true){
@@ -42,6 +41,7 @@ class ActivityLogService {
                     .setTypeSending(TypeSendingNotificationEnum.APP)
                     .setMessage(activityLog.activity)
                     .setIdLink(activityLog.idObj)
+                    .setTypeFrom(activityLog.typeObj)
                     .setTo(user)
                     .build())
             }
@@ -58,6 +58,14 @@ class ActivityLogService {
 
         if (search.idObj != null && search.idObj!!.isNotEmpty()) {
             searchBuilder.appendParamQuery("idObj", search.idObj!!)
+        }
+
+        if (search.typeObj != null && search.typeObj!!.isNotEmpty()) {
+            searchBuilder.appendParamQuery("typeObj", search.typeObj!!)
+        }
+
+        if (search.nameObj != null && search.nameObj!!.isNotEmpty()) {
+            searchBuilder.appendParamQuery("nameObj", search.nameObj!!)
         }
 
         if (search.beginDate != null) {
