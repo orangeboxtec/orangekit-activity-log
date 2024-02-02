@@ -29,9 +29,9 @@ dependencies {
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-resteasy-reactive")
 
-    implementation("com.orangebox.kit.core:orangekit-core:1.0.9")
+    implementation("com.orangebox.kit.core:orangekit-core:1.0.22")
     implementation("com.orangebox.kit.authkey:orangekit-authkey:1.0.1")
-    implementation("com.orangebox.kit.notification:orangekit-notification:1.0.3")
+    implementation("com.orangebox.kit.notification:orangekit-notification:1.0.6")
 
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.rest-assured:rest-assured")
