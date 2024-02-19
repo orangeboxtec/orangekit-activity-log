@@ -1,7 +1,7 @@
 package com.orangebox.kit.activitylog
 
 import com.orangebox.kit.core.dao.AbstractDAO
-import javax.enterprise.context.ApplicationScoped
+import jakarta.enterprise.context.ApplicationScoped
 
 @ApplicationScoped
 class ActivityLogDAO : AbstractDAO<ActivityLog>(ActivityLog::class.java) {

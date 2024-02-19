@@ -3,14 +3,12 @@ package com.orangebox.kit.activitylog
 import com.orangebox.kit.core.dao.OperationEnum
 import com.orangebox.kit.core.dao.SearchBuilder
 import com.orangebox.kit.core.dto.ResponseList
-import com.orangebox.kit.core.user.GeneralUser
 import com.orangebox.kit.notification.NotificationBuilder
 import com.orangebox.kit.notification.NotificationService
 import com.orangebox.kit.notification.TypeSendingNotificationEnum
-import java.util.ArrayList
-import java.util.Date
-import javax.enterprise.context.ApplicationScoped
-import javax.inject.Inject
+import jakarta.enterprise.context.ApplicationScoped
+import jakarta.inject.Inject
+import java.util.*
 
 @ApplicationScoped
 class ActivityLogService {

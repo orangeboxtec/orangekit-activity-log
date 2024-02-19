@@ -4,9 +4,9 @@ import com.orangebox.kit.core.annotation.OKEntity
 import com.orangebox.kit.core.annotation.OKId
 import com.orangebox.kit.core.user.GeneralUser
 import com.orangebox.kit.core.user.UserCard
+import jakarta.json.bind.annotation.JsonbDateFormat
 import org.bson.codecs.pojo.annotations.BsonIgnore
-import java.util.Date
-import javax.json.bind.annotation.JsonbDateFormat
+import java.util.*
 
 @OKEntity(name = "activityLog")
 class ActivityLog {
